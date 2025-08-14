@@ -19,6 +19,15 @@ class Trainer(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, verbose_name="Пользователь"
     )
+    experience = models.PositiveIntegerField(
+        verbose_name="Стаж (в годах)", help_text="Количество лет работы тренером"
+    )
+    bio = models.TextField(
+        verbose_name="Краткая биография", blank=True, null=True
+    )
+    achievements = models.TextField(
+        verbose_name="Спортивные достижения", blank=True, null=True
+    )
 
     class Meta:
         verbose_name = "Тренер"
@@ -67,15 +76,9 @@ class Schedule(models.Model):
         ("SUN", "Воскресенье"),
     ]
 
-    trainer = models.ForeignKey(
-        Trainer,
-        on_delete=models.CASCADE,
-        related_name="schedules",
-        verbose_name="Тренер",
-    )
-    gym = models.ForeignKey(
-        Gym, on_delete=models.CASCADE, related_name="schedules", verbose_name="Зал"
-    )
+    trainers_gym = models.ForeignKey(
+    TrainersGym, on_delete=models.CASCADE, related_name="schedules", verbose_name="Тренер и зал"
+)
     day_of_week = models.CharField(
         max_length=3, choices=DAYS, verbose_name="День недели"
     )
@@ -103,8 +106,7 @@ class Booking(models.Model):
         related_name="bookings",
         verbose_name="Расписание",
     )
-    booking_date = models.DateField(verbose_name="Дата записи")
-    booking_time = models.TimeField(verbose_name="Время записи")
+    booking_date = models.DateTimeField(verbose_name="Дата и время записи")
     duration_hours = models.IntegerField(verbose_name="Длительность (часы)")
 
     class Meta:
