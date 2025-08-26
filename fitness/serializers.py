@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Trainer, Gym, Schedule, TrainersGym
+from .models import Trainer, Gym, Schedule, TrainersGym, Booking
 
 class TrainerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,4 +19,9 @@ class ScheduleSerializer(serializers.ModelSerializer):
 class TrainersGymSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrainersGym
+        fields = '__all__'
+
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
         fields = '__all__'
