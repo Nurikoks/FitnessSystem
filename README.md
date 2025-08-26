@@ -154,5 +154,26 @@ ManyToOne → Schedule
 ---
 
 ## URL
+Все маршруты начинаются с `/api/v1/`.
+
+- **POST** `/register/` — регистрация нового пользователя.  
+- **POST** `/login/` — авторизация, получение JWT-токенов.  
+- **POST** `/login/refresh/` — обновление access-токена.  
+- **GET** `/fitness/trainers/` — список всех тренеров.  
+- **POST** `/fitness/trainers/` — добавить нового тренера.  
+- **GET** `/fitness/trainers/{id}/` — получить данные конкретного тренера.  
+- **PUT/PATCH** `/fitness/trainers/{id}/` — обновить данные тренера.  
+- **DELETE** `/fitness/trainers/{id}/` — удалить тренера.  
+- **GET** `/fitness/gyms/` — список залов.  
+- **POST** `/fitness/gyms/` — добавить новый зал.  
+- **GET** `/fitness/gyms/{id}/` — получить данные конкретного зала.  
+- **GET** `/fitness/trainers-gyms/` — список связей тренеров и залов.  
+- **POST** `/fitness/trainers-gyms/` — создать связь тренер-зал.  
+- **GET** `/fitness/schedules/` — список расписаний.  
+- **POST** `/fitness/schedules/` — создать расписание.  
+- **GET** `/fitness/schedules/{id}/` — получить конкретное расписание.  
+- **GET** `/fitness/bookings/` — список всех записей.  
+- **POST** `/fitness/bookings/` — создать запись на тренировку.  
+- **GET** `/fitness/bookings/{id}/` — получить конкретную запись. 
 
 
