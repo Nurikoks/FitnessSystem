@@ -20,11 +20,13 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from fitness.views import RegisterView
 
 urlpatterns = [
     path("api/v1/admin/", admin.site.urls),
     path("api/v1/fitness/", include("fitness.urls")),
-    path("api/v1/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/v1/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/v1/login/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/v1/", include("fitness.urls")),
+    path("api/v1/register/", RegisterView.as_view(), name="register"),
 ]
